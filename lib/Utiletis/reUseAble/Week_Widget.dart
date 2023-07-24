@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 Widget sunday () {
   return const Card(
@@ -86,18 +87,19 @@ Widget monday () {
   );
 }
 Widget Tuesday () {
-  return const Card(
+  return  Card(
     child: Column(
         children: [
           ListTile(
-              title: Text('Network Lab'),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Room 1"),
-                    Chip(label: Text("9:00-10:00")),
-                  ]
-              )
+              title: Text('Network Lab',style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),),
+              leading: LottieBuilder.asset('images/animation_lkhbsvuf.json', fit: BoxFit.cover),
+              trailing: Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+                color: Colors.pink,
+              ) ,),
+              subtitle: Text("Room 1"),
           ),
           Divider(),
           ListTile(

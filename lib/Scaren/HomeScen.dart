@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 
 import '../Utiletis/reUseAble/Week_Widget.dart';
 
@@ -47,53 +48,14 @@ class _HomeScenState extends State<HomeScen> {
                 ),
               ),
             ),
+            Lottie.asset('images/animation_lkhbn33z.json'),
+            SizedBox(height: 10,),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 90,
-                      decoration: const BoxDecoration(
-                        color: Colors.deepPurple,
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "Total Class 30",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 12,),
-                  Expanded(
-                    child: Container(
-                      height: 90,
-                      decoration: const BoxDecoration(
-                        color: Colors.deepPurple,
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "Cancel Class 30",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Text(
+                "Today: $formattedWeekday, $formattedTime",
+                style: const TextStyle(fontSize: 22, color: Colors.red),
               ),
-            ),
-            Text(
-              "Today: $formattedWeekday, $formattedTime",
-              style: const TextStyle(fontSize: 22, color: Colors.red),
             ),
             const SizedBox(height: 20,),
             if (formattedWeekday == "Monday")
