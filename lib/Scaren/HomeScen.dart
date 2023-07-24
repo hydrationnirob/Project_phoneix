@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+
+import '../Utiletis/reUseAble/TodaylistCard.dart';
 
 class HomeScen extends StatefulWidget {
   const HomeScen({Key? key}) : super(key: key);
@@ -9,74 +13,95 @@ class HomeScen extends StatefulWidget {
 }
 
 class _HomeScenState extends State<HomeScen> {
+  DateTime now = DateTime.now();
+  String formattedDate = DateFormat.yMMMd().format(DateTime.now()); // Jan 26, 2021
+  String formattedMonthDay = DateFormat(DateFormat.ABBR_MONTH_DAY).format(DateTime.now()); // Jan 26
+  String formattedWeekday = DateFormat(DateFormat.WEEKDAY).format(DateTime.now()); // Tuesday
+  String formattedTime = DateFormat.jm().format(DateTime.now()); // 11:00 AM
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Today\'s Class',style: TextStyle(
-          color: Colors.white,
-
-        ),),
+        title: const Text(
+          'Today\'s Class',
+          style: TextStyle(
+            color: Colors.deepPurple,
+          ),
+        ),
         centerTitle: true,
       ),
       drawer: const Drawer(
         child: Text('Drawer'),
       ),
-      body:  Padding(
+      body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: Text("Today's Class",style: TextStyle(
-                fontSize: 20,
-              )),
-            ),
-
-            SizedBox(height: 20,),
-
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                      height: 90,
-                    decoration: const BoxDecoration(
-                      color: Colors.deepPurple,
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                      child: const Center(
-                        child: Text("Total Class 30",style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                        )),
-                      )
-                  ),
+              child: Text(
+                "Today's Class",
+                style: TextStyle(
+                  fontSize: 20,
                 ),
-                const SizedBox(width: 12,),
-                Expanded(
-                  child: Container(
-                    height: 90,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 90,
                       decoration: const BoxDecoration(
                         color: Colors.deepPurple,
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
-                    child: const Center(
-                      child: Text("Cancel Class 30",style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                      )),
-                    )
+                      child: const Center(
+                        child: Text(
+                          "Total Class 30",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ]
+                  const SizedBox(width: 12,),
+                  Expanded(
+                    child: Container(
+                      height: 90,
+                      decoration: const BoxDecoration(
+                        color: Colors.deepPurple,
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "Cancel Class 30",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-              SizedBox(height: 20,),
-              const Text("Today: Sunday, 11:00 AM",style: TextStyle(fontSize: 22,color: Colors.red),),
+            Text(
+              "Today: $formattedWeekday, $formattedTime",
+              style: const TextStyle(fontSize: 22, color: Colors.red),
+            ),
+            const SizedBox(height: 20,),
+            const TodaylistCard(),
           ],
-
         ),
-      )
+      ),
+
 
     );
   }

@@ -13,9 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      useMaterial3: true,
+
       title: 'Phoenix',
       theme: ThemeData(
+        useMaterial3: true,
        brightness: Brightness.light,
        primarySwatch: Colors.deepPurple,
       ),

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'HomeScen.dart';
+import 'NavBar.dart';
 
 class SplaseScen extends StatefulWidget {
   const SplaseScen({Key? key, required String title}) : super(key: key);
@@ -23,7 +24,7 @@ class _SplaseScenState extends State<SplaseScen> {
     Future.delayed(const Duration(seconds: 3)).then((_) {
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const HomeScen()),
+        MaterialPageRoute(builder: (context) => const NavButton()),
             (route) => false,
       );
     });
