@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 
 
 import '../Utiletis/reUseAble/TodaylistCard.dart';
+import '../Utiletis/reUseAble/Week_Class.dart';
 
 class HomeScen extends StatefulWidget {
   const HomeScen({Key? key}) : super(key: key);
@@ -97,7 +98,8 @@ class _HomeScenState extends State<HomeScen> {
               style: const TextStyle(fontSize: 22, color: Colors.red),
             ),
             const SizedBox(height: 20,),
-            const TodaylistCard(),
+            sunday(),
+
           ],
         ),
       ),
