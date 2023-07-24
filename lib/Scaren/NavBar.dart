@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 import 'All_Class_List_scen.dart';
+import 'BusTime.dart';
 import 'HomeScen.dart';
 
 
@@ -70,6 +71,7 @@ class NevController extends GetxController
   var page=[
     const HomeScen(),
     const AllClassList(),
+    const  Bustime(),
 
 
 

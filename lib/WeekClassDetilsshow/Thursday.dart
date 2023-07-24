@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../Utiletis/reUseAble/Week_Widget.dart';
-class CSunday extends StatefulWidget {
-  const CSunday({Key? key}) : super(key: key);
+class Cthursday extends StatefulWidget {
+  const Cthursday({Key? key}) : super(key: key);
 
   @override
-  State<CSunday> createState() => _CSundayState();
+  State<Cthursday> createState() => _CthursdayState();
 }
 
-class _CSundayState extends State<CSunday> {
+class _CthursdayState extends State<Cthursday> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -16,9 +16,9 @@ class _CSundayState extends State<CSunday> {
         title: const Text('Class Details'),
       ),
       body: Column(
-        children: [
-          sunday(),
-        ]
+          children: [
+            Thursday(),
+          ]
       ),
     );
   }

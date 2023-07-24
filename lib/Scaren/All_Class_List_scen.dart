@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:phoenix_user/WeekClassDetilsshow/Monday.dart';
+import 'package:phoenix_user/WeekClassDetilsshow/Tuesday.dart';
+import 'package:phoenix_user/WeekClassDetilsshow/Wednesday.dart';
 
 import '../Utiletis/reUseAble/Week_Card.dart';
 import '../WeekClassDetilsshow/Sunday.dart';
@@ -27,21 +30,29 @@ class _AllClassListState extends State<AllClassList> {
           ),
           InkWell(child: WCardmenu("Sunday", 5), onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return const Sunday();
+              return const CSunday();
             }));
           }),
           InkWell(child: WCardmenu("Monday", 5), onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return const Sunday();
+              return const Cmonday();
             }));
           }),
           InkWell(child: WCardmenu("Tuesday", 5), onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return const Sunday();
+              return const Ctuesday();
             }));
           }),
-          InkWell(child: WCardmenu("Wednesday", 5), onTap: () {}),
-          InkWell(child: WCardmenu("Thursday", 5), onTap: () {}),
+          InkWell(child: WCardmenu("Wednesday", 5), onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const Cwednesday();
+            }));
+          }),
+          InkWell(child: WCardmenu("Thursday", 5), onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const Ctuesday();
+            }));
+          }),
         ]));
   }
 }

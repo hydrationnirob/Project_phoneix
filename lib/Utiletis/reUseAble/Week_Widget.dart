@@ -5,12 +5,15 @@ Widget sunday () {
     child: Column(
       children: [
         ListTile(
+            trailing: const Icon(Icons.update, color: Colors.deepPurple),
+
             title: Text('Network'),
             subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Room 1"),
                   Chip(label: Text("9:00-10:00")),
+
                 ]
             )
         ),
@@ -46,7 +49,7 @@ Widget monday () {
     child: Column(
         children: [
           ListTile(
-              title: Text('Network Lab'),
+              title: Text('Math '),
               subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -56,16 +59,6 @@ Widget monday () {
               )
           ),
           Divider(),
-          ListTile(
-              title: Text('Network Lab'),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Room 1"),
-                    Chip(label: Text("9:00-10:00")),
-                  ]
-              )
-          ),
           ListTile(
               title: Text('Network Lab'),
               subtitle: Column(
@@ -107,16 +100,6 @@ Widget Tuesday () {
               )
           ),
           Divider(),
-          ListTile(
-              title: Text('Network Lab'),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Room 1"),
-                    Chip(label: Text("9:00-10:00")),
-                  ]
-              )
-          ),
           ListTile(
               title: Text('Network Lab'),
               subtitle: Column(

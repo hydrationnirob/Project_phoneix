@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-
-import '../Utiletis/reUseAble/TodaylistCard.dart';
-import '../Utiletis/reUseAble/Week_Class.dart';
+import '../Utiletis/reUseAble/Week_Widget.dart';
 
 class HomeScen extends StatefulWidget {
   const HomeScen({Key? key}) : super(key: key);
@@ -98,7 +96,16 @@ class _HomeScenState extends State<HomeScen> {
               style: const TextStyle(fontSize: 22, color: Colors.red),
             ),
             const SizedBox(height: 20,),
-            sunday(),
+            if (formattedWeekday == "Monday")
+              monday(),
+            if (formattedWeekday == "Tuesday")
+              Tuesday(),
+            if (formattedWeekday == "Wednesday")
+              Wednesday(),
+            if (formattedWeekday == "Thursday")
+              Thursday(),
+            if (formattedWeekday == "Sunday")
+              sunday(),
 
           ],
         ),
