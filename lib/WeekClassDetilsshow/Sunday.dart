@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../Utiletis/reUseAble/Week_Widget.dart';
 class CSunday extends StatefulWidget {
@@ -17,7 +18,13 @@ class _CSundayState extends State<CSunday> {
       ),
       body: Column(
         children: [
-          sunday(),
+          Container(
+            width: double.infinity,
+            height: 150,
+            child: Lottie.asset('images/animation_lki1kf82.json',fit: BoxFit.cover,),
+          ),
+          SizedBox(height: 80,),
+          sunday(Icon(Icons.add_box,color: Colors.red,)),
         ]
       ),
     );

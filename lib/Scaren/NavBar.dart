@@ -27,9 +27,9 @@ class _NavButtonState extends State<NavButton> {
     return Scaffold(
 
       bottomNavigationBar: GNav(
-        color: Colors.deepPurple,
+        color: Colors.red,
         backgroundColor: Colors.white,
-        activeColor: Colors.amberAccent,
+        activeColor: Colors.black45,
 
         onTabChange: (value){
           controller.index.value = value;

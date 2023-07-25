@@ -1,190 +1,191 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
-Widget sunday () {
-  return const Card(
+
+Widget sunday (Widget Timeimg) {
+  return  Card(
     child: Column(
       children: [
         ListTile(
-            trailing: const Icon(Icons.update, color: Colors.deepPurple),
-
-            title: Text('Network'),
-            subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Room 1"),
-                  Chip(label: Text("9:00-10:00")),
-
-                ]
-            )
+          title: const Text('Network Lab',style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),),
+          leading: Timeimg,
+          trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+            color: Colors.pink,
+          ) ,),
+          subtitle: const Text("Room 1"),
         ),
         Divider(),
         ListTile(
-            title: Text('Software Lab'),
-            subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Room 1"),
-                  Chip(label: Text("9:00-10:00")),
-                ]
-            )
+          title: const Text('Network Lab',style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),),
+          leading: Timeimg,
+          trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+            color: Colors.pink,
+          ) ,),
+          subtitle: const Text("Room 1"),
         ),
         Divider(),
         ListTile(
-            title: Text('Math Lab'),
-            subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Room 1"),
-                  Chip(label: Text("9:00-10:00")),
-                ]
-            )
+          title: const Text('Network Lab',style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),),
+          leading: Timeimg,
+          trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+            color: Colors.pink,
+          ) ,),
+          subtitle: const Text("Room 1"),
         ),
       ]
 
     ),
   );
 }
-Widget monday () {
-  return const Card(
-    child: Column(
-        children: [
-          ListTile(
-              title: Text('Math '),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Room 1"),
-                    Chip(label: Text("9:00-10:00")),
-                  ]
-              )
-          ),
-          Divider(),
-          ListTile(
-              title: Text('Network Lab'),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Room 1"),
-                    Chip(label: Text("9:00-10:00")),
-                  ]
-              )
-          ),
-          Divider(),
-          ListTile(
-              title: Text('Network Lab'),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Room 1"),
-                    Chip(label: Text("9:00-10:00")),
-                  ]
-              )
-          ),
-        ]
-
-    ),
-  );
-}
-Widget Tuesday () {
+Widget monday (Widget Timeimg) {
   return  Card(
     child: Column(
         children: [
           ListTile(
-              title: Text('Network Lab',style: TextStyle(
+            title: const Text('Network Lab',style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),),
+            leading: Timeimg,
+            trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+              color: Colors.pink,
+            ) ,),
+            subtitle: const Text("Room 1"),
+          ),
+          Divider(),
+          ListTile(
+            title: const Text('Network Lab',style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),),
+            leading: Timeimg,
+            trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+              color: Colors.pink,
+            ) ,),
+            subtitle: const Text("Room 1"),
+          ),
+          Divider(),
+          ListTile(
+            title: const Text('Network Lab',style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),),
+            leading: Timeimg,
+            trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+              color: Colors.pink,
+            ) ,),
+            subtitle: const Text("Room 1"),
+          ),
+        ]
+
+    ),
+  );
+}
+Widget Tuesday (Widget? Timemg) {
+  return  Card(
+    child: Column(
+        children: [
+          ListTile(
+              title: const Text('Network Lab',style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),),
-              leading: LottieBuilder.asset('images/animation_lkhbsvuf.json', fit: BoxFit.cover),
-              trailing: Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+              leading: Timemg,
+              trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
                 color: Colors.pink,
               ) ,),
-              subtitle: Text("Room 1"),
+              subtitle: const Text("Room 1"),
           ),
-          Divider(),
+          const Divider(),
           ListTile(
-              title: Text('Network Lab'),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Room 1"),
-                    Chip(label: Text("9:00-10:00")),
-                  ]
-              )
+            title: const Text('Network Lab',style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),),
+            leading: Timemg,
+            trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+              color: Colors.pink,
+            ) ,),
+            subtitle: const Text("Room 1"),
           ),
-          Divider(),
+          const Divider(),
           ListTile(
-              title: Text('Network Lab'),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Room 1"),
-                    Chip(label: Text("9:00-10:00")),
-                  ]
-              )
-          ),
-        ]
-
-    ),
-  );
-}
-Widget Wednesday () {
-  return const Card(
-    child: Column(
-        children: [
-          ListTile(
-              title: Text('Network Lab'),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Room 1"),
-                    Chip(label: Text("9:00-10:00")),
-                  ]
-              )
-          ),
-          Divider(),
-          ListTile(
-              title: Text('Network Lab'),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Room 1"),
-                    Chip(label: Text("9:00-10:00")),
-                  ]
-              )
-          ),
-          ListTile(
-              title: Text('Network Lab'),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Room 1"),
-                    Chip(label: Text("9:00-10:00")),
-                  ]
-              )
-          ),
-          Divider(),
-          ListTile(
-              title: Text('Network Lab'),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Room 1"),
-                    Chip(label: Text("9:00-10:00")),
-                  ]
-              )
+            title: const Text('Network Lab',style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),),
+            leading: Timemg,
+            trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+              color: Colors.pink,
+            ) ,),
+            subtitle: const Text("Room 1"),
           ),
         ]
 
     ),
   );
 }
-Widget Thursday () {
-  return const Card(
+Widget Wednesday (Widget Timeimg) {
+  return  Card(
     child: Column(
         children: [
           ListTile(
+            title: const Text('Network Lab',style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),),
+            leading: Timeimg,
+            trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+              color: Colors.pink,
+            ) ,),
+            subtitle: const Text("Room 1"),
+          ),
+          Divider(),
+
+          ListTile(
+            title: const Text('Network Lab',style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),),
+            leading: Timeimg,
+            trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+              color: Colors.pink,
+            ) ,),
+            subtitle: const Text("Room 1"),
+          ),
+          Divider(),
+          ListTile(
+            title: const Text('Network Lab',style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),),
+            leading: Timeimg,
+            trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+              color: Colors.pink,
+            ) ,),
+            subtitle: const Text("Room 1"),
+          ),
+        ]
+
+    ),
+  );
+}
+Widget Thursday (Widget Timeimg) {
+  return  Card(
+    child: Column(
+        children: [
+          ListTile(
+
               title: Text('Network Lab'),
+              trailing: Timeimg ,
               subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

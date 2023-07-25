@@ -5,10 +5,10 @@ Widget WCardmenu( String day, int Class) {
   return Card(
     elevation: 5,
       child: ListTile(
-
-          trailing: const Icon(FontAwesomeIcons.arrowRight, color: Colors.deepPurple),
+          leading: const Icon(FontAwesomeIcons.calendarCheck, color: Colors.red,),
+          trailing: const Icon(FontAwesomeIcons.arrowRight, color: Colors.red),
           title: Text(day,style: const TextStyle(
-            color: Colors.deepPurple,
+            color: Colors.red,
             fontSize: 25,
           ),),
           subtitle: Column(

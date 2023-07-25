@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
        brightness: Brightness.light,
-       primarySwatch: Colors.deepPurple,
+       primarySwatch: Colors.red,
       ),
 
       home: const SplaseScen(title: 'Phoenix'),

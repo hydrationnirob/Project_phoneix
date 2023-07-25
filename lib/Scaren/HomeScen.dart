@@ -25,9 +25,7 @@ class _HomeScenState extends State<HomeScen> {
       appBar: AppBar(
         title: const Text(
           'Today\'s Class',
-          style: TextStyle(
-            color: Colors.deepPurple,
-          ),
+
         ),
         centerTitle: true,
       ),
@@ -45,6 +43,7 @@ class _HomeScenState extends State<HomeScen> {
                 "Today's Class",
                 style: TextStyle(
                   fontSize: 20,
+                  color: Colors.red
                 ),
               ),
             ),
@@ -59,15 +58,15 @@ class _HomeScenState extends State<HomeScen> {
             ),
             const SizedBox(height: 20,),
             if (formattedWeekday == "Monday")
-              monday(),
+              monday(LottieBuilder.asset('images/animation_lkhbsvuf.json')),
             if (formattedWeekday == "Tuesday")
-              Tuesday(),
+              Tuesday(LottieBuilder.asset('images/animation_lkhbsvuf.json')),
             if (formattedWeekday == "Wednesday")
-              Wednesday(),
+              Wednesday(LottieBuilder.asset('images/animation_lkhbsvuf.json')),
             if (formattedWeekday == "Thursday")
-              Thursday(),
+              Thursday(LottieBuilder.asset('images/animation_lkhbsvuf.json')),
             if (formattedWeekday == "Sunday")
-              sunday(),
+              sunday(LottieBuilder.asset('images/animation_lkhbsvuf.json')),
 
           ],
         ),
