@@ -133,20 +133,20 @@ Widget Tuesday (Widget? Timemg) {
     ),
   );
 }
-Widget Wednesday (Widget Timeimg) {
+Widget Wednesday (Widget Timeimg, String Title, String Room, String Stratime, String Endtime) {
   return  Card(
     child: Column(
         children: [
           ListTile(
-            title: const Text('Network Lab',style: TextStyle(
+            title:  Text(Title,style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),),
             leading: Timeimg,
-            trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
+            trailing:  Chip(label: Text("$Stratime-$Endtime"),labelStyle: const TextStyle(
               color: Colors.pink,
             ) ,),
-            subtitle: const Text("Room 1"),
+            subtitle:  Text("Room $Room"),
           ),
           Divider(),
 
@@ -186,7 +186,7 @@ Widget Thursday (Widget Timeimg) {
 
               title: Text('Network Lab'),
               trailing: Timeimg ,
-              subtitle: Column(
+              subtitle: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text("Room 1"),
@@ -195,16 +195,7 @@ Widget Thursday (Widget Timeimg) {
               )
           ),
           Divider(),
-          ListTile(
-              title: Text('Network Lab'),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Room 1"),
-                    Chip(label: Text("9:00-10:00")),
-                  ]
-              )
-          ),
+
           ListTile(
               title: Text('Network Lab'),
               subtitle: Column(

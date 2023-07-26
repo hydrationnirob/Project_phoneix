@@ -18,10 +18,10 @@ class _BustimeState extends State<Bustime> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Bus Stop'),
-          bottom: TabBar(
+          bottom: const TabBar(
             tabs: [
-              Tab(text: 'Tab 1'), // Tab 1 label
-              Tab(text: 'Tab 2'), // Tab 2 label
+              Tab(text: 'Root 1'), // Tab 1 label
+              Tab(text: 'Root 2'), // Tab 2 label
             ],
           ),
         ),
@@ -30,12 +30,7 @@ class _BustimeState extends State<Bustime> {
             // Tab 1 content
             Column(
               children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 120,
-                  child: Lottie.asset('images/animation_lki4n4r0.json', height: 100,width: 100,fit: BoxFit.cover,),
-                ),
-                const SizedBox(height: 190,),
+                const SizedBox(height: 5,),
                 BusCard("Talaimar","9:58"),
                 BusCard("Talaimar","9:58"),
                 BusCard("Talaimar","9:58"),
@@ -44,14 +39,9 @@ class _BustimeState extends State<Bustime> {
             // Tab 2 content
             Column(
               children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 150,
-                  child: Padding(
-                    padding: const EdgeInsets.all(50.0),
-                    child: Lottie.asset('images/animation_lki1kf82.json', fit: BoxFit.cover,),
-                  ),
-                ),
+                BusCard("Talaimar","9:58"),
+                BusCard("Talaimar","9:58"),
+                BusCard("Talaimar","9:58"),
                 // Add other widgets for Tab 2 content here
               ],
             ),

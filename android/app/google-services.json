@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "338182850959",
+    "project_id": "routineford",
+    "storage_bucket": "routineford.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338182850959:android:9b6b8eb9b697472bc4e3fa",
+        "android_client_info": {
+          "package_name": "com.example.phoenix_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338182850959-grf8odkniret9kl7tudjq46fg5deg26b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvFuakTHVSshX_8ADMDWlUcFQn6wFD5k0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338182850959-grf8odkniret9kl7tudjq46fg5deg26b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

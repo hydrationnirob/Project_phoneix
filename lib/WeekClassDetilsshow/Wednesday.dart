@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../ClintData.dart';
 import '../Utiletis/reUseAble/Week_Widget.dart';
+
 class Cwednesday extends StatefulWidget {
   const Cwednesday({Key? key}) : super(key: key);
 
@@ -10,22 +12,52 @@ class Cwednesday extends StatefulWidget {
 }
 
 class _CwednesdayState extends State<Cwednesday> {
+  late Future<DocumentSnapshot>? wednesdayData; // Make the variable nullable
+
+  @override
+  void initState() {
+    super.initState();
+    // Fetch data from Firestore
+    wednesdayData = FirebaseFirestore.instance.collection('ClassTime').doc('NeAuMAchXNAN33iXkMsu').get();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: const Text('Class Details'),
       ),
       body: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              height: 150,
-              child: Lottie.asset('images/animation_lki1kf82.json',fit: BoxFit.cover,),
-            ),
-            SizedBox(height: 80,),
-            Wednesday(Icon(Icons.add_box,color: Colors.red,)),
-          ]
+        children: [
+          Container(
+            width: double.infinity,
+            height: 150,
+            child: Lottie.asset('images/animation_lki1kf82.json', fit: BoxFit.cover,),
+          ),
+          const SizedBox(height: 80,),
+          // Check if wednesdayData is null before using FutureBuilder
+          if (wednesdayData != null)
+            FutureBuilder<DocumentSnapshot>(
+              future: wednesdayData!,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator(); // Show a loader while data is being fetched.
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  // Access the data from the snapshot and display it in your custom widget.
+                  final data = snapshot.data!;
+                  return Wednesday(
+                    Icon(Icons.add_box, color: Colors.red),
+                    data['Name'],
+                    data['Room'],
+                    data['StartTime'],
+                    data['EndTime'],
+                  );
+                }
+              },
+            )
+        ],
       ),
     );
   }
