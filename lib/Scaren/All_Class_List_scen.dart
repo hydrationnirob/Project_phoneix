@@ -6,6 +6,7 @@ import 'package:phoenix_user/WeekClassDetilsshow/Wednesday.dart';
 
 import '../Utiletis/reUseAble/Week_Card.dart';
 import '../WeekClassDetilsshow/Sunday.dart';
+import '../WeekClassDetilsshow/Thursday.dart';
 
 class AllClassList extends StatefulWidget {
   const AllClassList({Key? key}) : super(key: key);
@@ -61,7 +62,7 @@ class _AllClassListState extends State<AllClassList> {
             }),
             InkWell(child: WCardmenu("Thursday", 5), onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const Ctuesday();
+                return const Cthursday();
               }));
             }),
           ]),

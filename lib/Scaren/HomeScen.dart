@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 
 import '../Utiletis/reUseAble/Week_Widget.dart';
+import '../WeekClassDetilsshow/Thursday.dart';
 
 class HomeScen extends StatefulWidget {
   const HomeScen({Key? key}) : super(key: key);
@@ -70,6 +71,7 @@ class _HomeScenState extends State<HomeScen> {
                   "10:00",
                 ),
               if (formattedWeekday == "Thursday")
+                  // const Cthursday(),
                 Thursday(LottieBuilder.asset('images/animation_lkhbsvuf.json')),
               if (formattedWeekday == "Sunday")
                 sunday(LottieBuilder.asset('images/animation_lkhbsvuf.json')),

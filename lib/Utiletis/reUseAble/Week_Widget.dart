@@ -148,36 +148,15 @@ Widget Wednesday (Widget Timeimg, String Title, String Room, String Stratime, St
             ) ,),
             subtitle:  Text("Room $Room"),
           ),
-          Divider(),
-
-          ListTile(
-            title: const Text('Network Lab',style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),),
-            leading: Timeimg,
-            trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
-              color: Colors.pink,
-            ) ,),
-            subtitle: const Text("Room 1"),
-          ),
-          Divider(),
-          ListTile(
-            title: const Text('Network Lab',style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),),
-            leading: Timeimg,
-            trailing: const Chip(label: Text("9:00-10:00"),labelStyle: TextStyle(
-              color: Colors.pink,
-            ) ,),
-            subtitle: const Text("Room 1"),
-          ),
         ]
 
     ),
   );
 }
+
+
+
+
 Widget Thursday (Widget Timeimg) {
   return  Card(
     child: Column(
