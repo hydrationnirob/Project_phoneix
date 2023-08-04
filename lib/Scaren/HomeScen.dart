@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
+import 'package:phoenix_user/Utiletis/reUseAble/DateTimeClass.dart';
 import '../Utiletis/reUseAble/NoClassToday.dart';
 import 'CardForHomePage/SundayCardForHomePage.dart';
 
@@ -14,11 +14,8 @@ class HomeScen extends StatefulWidget {
 }
 
 class _HomeScenState extends State<HomeScen> {
-  DateTime now = DateTime.now();
-  String formattedDate = DateFormat.yMMMd().format(DateTime.now());
-  String formattedMonthDay = DateFormat(DateFormat.ABBR_MONTH_DAY).format(DateTime.now()); // Jan 26
-  String formattedWeekday = DateFormat(DateFormat.WEEKDAY).format(DateTime.now()); // Tuesday
-  String formattedTime = DateFormat.jm().format(DateTime.now()); // 11:00 AM
+
+  DateTimeClass dateTimeClass= DateTimeClass();
 
   int TotalClassCount = 0;
 
@@ -30,12 +27,12 @@ class _HomeScenState extends State<HomeScen> {
   }
 
   Future<QuerySnapshot<Map<String, dynamic>>> _TotalClassCountF() async {
-    final snapshot = await FirebaseFirestore.instance.collection(formattedWeekday).get();
+    final snapshot = await FirebaseFirestore.instance.collection(dateTimeClass.NextDayCount(1)).get();
     // Store the document count in the variable
     setState(() {
       TotalClassCount = snapshot.size;
     });
-    print('TotalClassCount: $TotalClassCount');
+
     return snapshot;
   }
 
@@ -43,7 +40,7 @@ class _HomeScenState extends State<HomeScen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Today\'s Class'),
+        title: const Text('Next Day Class'),
         centerTitle: true,
       ),
       drawer: const Drawer(
@@ -62,6 +59,7 @@ class _HomeScenState extends State<HomeScen> {
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.red,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -70,36 +68,35 @@ class _HomeScenState extends State<HomeScen> {
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: Text(
-                  "Last Update: $formattedWeekday, $formattedTime",
+                  "Last Update: ${dateTimeClass.formattedWeekday}: ${dateTimeClass.formattedTime}",
                   style: const TextStyle(fontSize: 17, color: Colors.red),
                 ),
               ),
               const SizedBox(height: 10),
                 Padding(
-                 padding: EdgeInsets.only(left: 8.0),
+                 padding: const EdgeInsets.only(left: 8.0),
                  child: Chip(label: Text("Total Class $TotalClassCount")),
                ),
 
               const SizedBox(height: 5),
               //_________________________________________________________________
-              if (formattedWeekday == "Saturday")
+              if (dateTimeClass.formattedWeekday == "Saturday")
                 const SundayCardForHomePage(collectionName: 'Sunday',),
-              if (formattedWeekday == "Sunday")
+              if (dateTimeClass.formattedWeekday == "Sunday")
                 const SundayCardForHomePage(collectionName: 'Monday',),
-              if (formattedWeekday == "Monday")
+              if (dateTimeClass.formattedWeekday == "Monday")
                 const SundayCardForHomePage(collectionName: 'Tuesday',),
-              if (formattedWeekday == "Tuesday")
+              if (dateTimeClass.formattedWeekday == "Tuesday")
                 const SundayCardForHomePage(collectionName: 'Wednesday',),
-              if (formattedWeekday == "Wednesday")
+              if (dateTimeClass.formattedWeekday == "Wednesday")
                 const SundayCardForHomePage(collectionName: 'Thursday',),
-              if (formattedWeekday == "Friday")
-                const SundayCardForHomePage(collectionName: 'Sunday',),
+
 
               //____________________________________________________________________
 
              //  Add a fallback widget for other weekdays
-              //if (!["Monday", "Tuesday", "Wednesday", "Sunday","Saturday"].contains(formattedWeekday))
-              //  noClassToday(),
+              if (!["Monday", "Tuesday", "Sunday","Saturday","Saturday"].contains(dateTimeClass.formattedWeekday))
+                noClassToday(),
             ],
           ),
         ),

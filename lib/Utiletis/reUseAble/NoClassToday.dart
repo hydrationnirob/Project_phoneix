@@ -6,7 +6,7 @@ Widget noClassToday() {
       iconColor: Colors.red,
       leading: Icon(Icons.holiday_village_outlined),
       title: Text(
-        "No Class Today",
+        "No Class Tomorrow",
       )
     )
   );

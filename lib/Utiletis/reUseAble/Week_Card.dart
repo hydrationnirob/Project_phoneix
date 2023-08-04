@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lottie/lottie.dart';
 
-Widget WCardmenu( String day, int Class) {
+import 'DateTimeClass.dart';
+
+Widget WCardmenu( String day, int Class , String Todate) {
+
+  DateTimeClass dateTimeClass = DateTimeClass();
   return Card(
-    elevation: 5,
       child: ListTile(
-          leading: const Icon(FontAwesomeIcons.calendarCheck, color: Colors.red,),
-          trailing: const Icon(FontAwesomeIcons.arrowRight, color: Colors.red),
-          title: Text(day,style: const TextStyle(
-            color: Colors.red,
-            fontSize: 25,
-          ),),
-          subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+          leading:  dateTimeClass.formattedWeekday == day ? Icon(Icons.download_done,color: Colors.red,) : Icon(Icons.next_plan_rounded,color: Colors.grey,),
+          trailing:  Chip(label: Text("Total Class $Class",
+          style:  TextStyle(color:
+          dateTimeClass.formattedWeekday == day ? Colors.red : Colors.black
+          ),)),
+          title: Text(day,style: const TextStyle(fontSize: 25,),),
+          subtitle: Text(Todate),
+          tileColor: dateTimeClass.formattedWeekday == day ? Colors.red.shade100 : Colors.white
 
-                Chip(label: Text("Total Class $Class")),
-              ]
-          )
       )
   );
 }

@@ -17,7 +17,7 @@ Widget BusCard (String Location, String Time)
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-                Chip(label: Text("Total Class $Time")),
+                Chip(label: Text("Time: $Time")),
               ]
           )
       )

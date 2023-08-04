@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:phoenix_user/Scaren/CardForWeekClass/Monday.dart';
 import 'package:phoenix_user/Scaren/CardForWeekClass/Tuesday.dart';
 import 'package:phoenix_user/Scaren/CardForWeekClass/Wednesday.dart';
+import 'package:phoenix_user/Utiletis/reUseAble/DateTimeClass.dart';
 import '../Utiletis/reUseAble/Week_Card.dart';
 import 'CardForWeekClass/Sunday.dart';
 import 'CardForWeekClass/Thursday.dart';
@@ -86,7 +87,7 @@ class _AllClassListState extends State<AllClassList> {
    }
 
 
-
+DateTimeClass dateTimeClass= DateTimeClass();
 
 
 
@@ -105,34 +106,41 @@ class _AllClassListState extends State<AllClassList> {
               padding: EdgeInsets.only(left: 10,bottom: 10),
               child: Text("Show All Class", style: TextStyle(fontSize: 20)),
             ),
-
                 Container(
                     width: double.infinity,
                     height: 200,
-                    child: Image.asset("images/banner.png", fit: BoxFit.cover,)
+                    child: Image.asset("images/2553.jpg", fit: BoxFit.cover,)
                 ),
 
-            InkWell(child: WCardmenu("Sunday", sundayDocumentCount), onTap: () {
+             Padding(
+               padding: const EdgeInsets.all(8.0),
+               child: Text( "Today: ${dateTimeClass.formattedMonthDay} ${dateTimeClass.formattedWeekday}", style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.red),),
+             ),
+
+            InkWell(child: WCardmenu("Sunday", sundayDocumentCount, dateTimeClass.NextSundayDate()),
+
+                onTap: () {
+
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return const SundayWeekClass();
               }));
             }),
-            InkWell(child: WCardmenu("Monday", mondayDocumentCount), onTap: () {
+            InkWell(child: WCardmenu("Monday", mondayDocumentCount,dateTimeClass.NextMondayDate()), onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return const MondayWeekClass();
               }));
             }),
-            InkWell(child: WCardmenu("Tuesday", tuesdayDocumentCount), onTap: () {
+            InkWell(child: WCardmenu("Tuesday", tuesdayDocumentCount,dateTimeClass.NextTuesdayDate()), onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return const TuesdayWeekClass();
               }));
             }),
-            InkWell(child: WCardmenu("Wednesday", wednesdayDocumentCount), onTap: () {
+            InkWell(child: WCardmenu("Wednesday", wednesdayDocumentCount,dateTimeClass.NextWednesdayDate()), onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return const WednesdayWeekClass();
               }));
             }),
-            InkWell(child: WCardmenu("Thursday", thursdayDocumentCount), onTap: () {
+            InkWell(child: WCardmenu("Thursday", thursdayDocumentCount,dateTimeClass.NextthursdayDate()), onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return const ThursdayWeekClass();
               }));
