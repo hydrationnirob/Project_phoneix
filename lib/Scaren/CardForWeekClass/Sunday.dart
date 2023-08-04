@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../Utiletis/reUseAble/Week_Widget.dart';
+import '../../Utiletis/reUseAble/HomePageCardWidget.dart';
 
-class Cwednesday extends StatefulWidget {
-  const Cwednesday({Key? key}) : super(key: key);
+class SundayWeekClass extends StatefulWidget {
+  const SundayWeekClass({Key? key}) : super(key: key);
 
   @override
-  State<Cwednesday> createState() => _CwednesdayState();
+  State<SundayWeekClass> createState() => _SundayWeekClassState();
 }
 
-class _CwednesdayState extends State<Cwednesday> {
+class _SundayWeekClassState extends State<SundayWeekClass> {
   late Future<QuerySnapshot<Map<String, dynamic>>> wednesdayData; // Make the variable nullable
 
   @override
   void initState() {
     super.initState();
     // Fetch data from Firestore
-    wednesdayData = FirebaseFirestore.instance.collection('ClassTime').get();
+    wednesdayData = FirebaseFirestore.instance.collection('Sunday').orderBy("StartTime").get();
   }
 
   @override
@@ -49,7 +49,7 @@ class _CwednesdayState extends State<Cwednesday> {
                     itemCount: documents.length,
                     itemBuilder: (context, index) {
                       final data = documents[index].data();
-                      return Wednesday(
+                      return HomePageCardWidget(
                         Icon(Icons.add_box, color: Colors.red),
                         data['Name'],
                         data['Room'],

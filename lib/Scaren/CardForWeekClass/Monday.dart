@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../Utiletis/reUseAble/HomePageCardWidget.dart';
 
-import '../Utiletis/reUseAble/Week_Widget.dart';
-
-class Cthursday extends StatefulWidget {
-  const Cthursday({Key? key}) : super(key: key);
+class MondayWeekClass extends StatefulWidget {
+  const MondayWeekClass({Key? key}) : super(key: key);
 
   @override
-  State<Cthursday> createState() => _CthursdayState();
+  State<MondayWeekClass> createState() => _MondayWeekClassState();
 }
 
-class _CthursdayState extends State<Cthursday> {
-  late Future<QuerySnapshot<Map<String, dynamic>>> thursdayData; // Make the variable nullable
+class _MondayWeekClassState extends State<MondayWeekClass> {
+  late Future<QuerySnapshot<Map<String, dynamic>>> wednesdayData; // Make the variable nullable
 
   @override
   void initState() {
     super.initState();
     // Fetch data from Firestore
-    thursdayData = FirebaseFirestore.instance.collection('ClassTime').get();
+    wednesdayData = FirebaseFirestore.instance.collection('Monday').get();
   }
 
   @override
@@ -35,9 +34,9 @@ class _CthursdayState extends State<Cthursday> {
             child: Lottie.asset('images/animation_lki1kf82.json', fit: BoxFit.cover,),
           ),
           const SizedBox(height: 80,),
-          // Check if thursdayData is null before using FutureBuilder
+          // Check if wednesdayData is null before using FutureBuilder
           FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
-            future: thursdayData,
+            future: wednesdayData,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return CircularProgressIndicator(); // Show a loader while data is being fetched.
@@ -50,7 +49,7 @@ class _CthursdayState extends State<Cthursday> {
                     itemCount: documents.length,
                     itemBuilder: (context, index) {
                       final data = documents[index].data();
-                      return Wednesday(
+                      return HomePageCardWidget(
                         Icon(Icons.add_box, color: Colors.red),
                         data['Name'],
                         data['Room'],

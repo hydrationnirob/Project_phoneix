@@ -24,10 +24,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       title: 'Phoenix',
-      theme: ThemeData(
+      theme: ThemeData.light(
         useMaterial3: true,
-       brightness: Brightness.light,
-       primarySwatch: Colors.red,
+
+
       ),
 
       home: const SplaseScen(title: 'Phoenix'),

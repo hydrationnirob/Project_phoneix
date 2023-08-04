@@ -1,10 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
-
-import '../Utiletis/reUseAble/Week_Widget.dart';
-import '../WeekClassDetilsshow/Thursday.dart';
+import '../Utiletis/reUseAble/NoClassToday.dart';
+import 'CardForHomePage/SundayCardForHomePage.dart';
 
 class HomeScen extends StatefulWidget {
   const HomeScen({Key? key}) : super(key: key);
@@ -15,19 +15,35 @@ class HomeScen extends StatefulWidget {
 
 class _HomeScenState extends State<HomeScen> {
   DateTime now = DateTime.now();
-  String formattedDate = DateFormat.yMMMd().format(DateTime.now()); // Jan 26, 2021
+  String formattedDate = DateFormat.yMMMd().format(DateTime.now());
   String formattedMonthDay = DateFormat(DateFormat.ABBR_MONTH_DAY).format(DateTime.now()); // Jan 26
   String formattedWeekday = DateFormat(DateFormat.WEEKDAY).format(DateTime.now()); // Tuesday
   String formattedTime = DateFormat.jm().format(DateTime.now()); // 11:00 AM
+
+  int TotalClassCount = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _TotalClassCountF();
+  }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> _TotalClassCountF() async {
+    final snapshot = await FirebaseFirestore.instance.collection(formattedWeekday).get();
+    // Store the document count in the variable
+    setState(() {
+      TotalClassCount = snapshot.size;
+    });
+    print('TotalClassCount: $TotalClassCount');
+    return snapshot;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Today\'s Class',
-
-        ),
+        title: const Text('Today\'s Class'),
         centerTitle: true,
       ),
       drawer: const Drawer(
@@ -42,46 +58,53 @@ class _HomeScenState extends State<HomeScen> {
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  "Today's Class",
+                  "Upcoming Classes : Tomorrow",
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.red
+                    color: Colors.red,
                   ),
                 ),
               ),
               Lottie.asset('images/animation_lkhbn33z.json'),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: Text(
-                  "Today: $formattedWeekday, $formattedTime",
-                  style: const TextStyle(fontSize: 22, color: Colors.red),
+                  "Last Update: $formattedWeekday, $formattedTime",
+                  style: const TextStyle(fontSize: 17, color: Colors.red),
                 ),
               ),
-              const SizedBox(height: 20,),
-              if (formattedWeekday == "Monday")
-                monday(LottieBuilder.asset('images/animation_lkhbsvuf.json')),
-              if (formattedWeekday == "Tuesday")
-                Tuesday(LottieBuilder.asset('images/animation_lkhbsvuf.json')),
-              if (formattedWeekday == "Wednesday")
-                Wednesday(LottieBuilder.asset('images/animation_lkhbsvuf.json'),
-                  "Software Engineering",
-                  "413",
-                  "9:00",
-                  "10:00",
-                ),
-              if (formattedWeekday == "Thursday")
-                  // const Cthursday(),
-                Thursday(LottieBuilder.asset('images/animation_lkhbsvuf.json')),
-              if (formattedWeekday == "Sunday")
-                sunday(LottieBuilder.asset('images/animation_lkhbsvuf.json')),
+              const SizedBox(height: 10),
+                Padding(
+                 padding: EdgeInsets.only(left: 8.0),
+                 child: Chip(label: Text("Total Class $TotalClassCount")),
+               ),
 
+              const SizedBox(height: 5),
+              //_________________________________________________________________
+              if (formattedWeekday == "Saturday")
+                const SundayCardForHomePage(collectionName: 'Sunday',),
+              if (formattedWeekday == "Sunday")
+                const SundayCardForHomePage(collectionName: 'Monday',),
+              if (formattedWeekday == "Monday")
+                const SundayCardForHomePage(collectionName: 'Tuesday',),
+              if (formattedWeekday == "Tuesday")
+                const SundayCardForHomePage(collectionName: 'Wednesday',),
+              if (formattedWeekday == "Wednesday")
+                const SundayCardForHomePage(collectionName: 'Thursday',),
+              if (formattedWeekday == "Friday")
+                const SundayCardForHomePage(collectionName: 'Sunday',),
+
+              //____________________________________________________________________
+
+             //  Add a fallback widget for other weekdays
+              //if (!["Monday", "Tuesday", "Wednesday", "Sunday","Saturday"].contains(formattedWeekday))
+              //  noClassToday(),
             ],
           ),
         ),
       ),
-
-
     );
   }
+
 }
