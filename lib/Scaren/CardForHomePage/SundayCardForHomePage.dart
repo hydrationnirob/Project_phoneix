@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/components/loader/gf_loader.dart';
+import 'package:getwidget/types/gf_loader_type.dart';
 class SundayCardForHomePage extends StatefulWidget {
   final String collectionName;
 
@@ -39,7 +41,8 @@ class _SundayCardForHomePageState extends State<SundayCardForHomePage> {
       future: homePageData,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator()); // Show a loader while data is being fetched.
+          return  const Center(child: GFLoader(type:GFLoaderType.ios),
+          ); // Show a loader while data is being fetched.
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else {

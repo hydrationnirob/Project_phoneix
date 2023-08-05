@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:phoenix_user/Utiletis/reUseAble/DateTimeClass.dart';
 import '../Utiletis/reUseAble/NoClassToday.dart';
 import 'CardForHomePage/SundayCardForHomePage.dart';
+import 'Drower.dart';
 
 class HomeScen extends StatefulWidget {
   const HomeScen({Key? key}) : super(key: key);
@@ -14,8 +15,7 @@ class HomeScen extends StatefulWidget {
 }
 
 class _HomeScenState extends State<HomeScen> {
-
-  DateTimeClass dateTimeClass= DateTimeClass();
+  DateTimeClass dateTimeClass = DateTimeClass();
 
   int TotalClassCount = 0;
 
@@ -27,7 +27,9 @@ class _HomeScenState extends State<HomeScen> {
   }
 
   Future<QuerySnapshot<Map<String, dynamic>>> _TotalClassCountF() async {
-    final snapshot = await FirebaseFirestore.instance.collection(dateTimeClass.NextDayCount(1)).get();
+    final snapshot = await FirebaseFirestore.instance
+        .collection(dateTimeClass.NextDayCount(1))
+        .get();
     // Store the document count in the variable
     setState(() {
       TotalClassCount = snapshot.size;
@@ -43,8 +45,8 @@ class _HomeScenState extends State<HomeScen> {
         title: const Text('Next Day Class'),
         centerTitle: true,
       ),
-      drawer: const Drawer(
-        child: Text('Drawer'),
+      drawer:  Drawer(
+        child: Drower(context),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -73,29 +75,39 @@ class _HomeScenState extends State<HomeScen> {
                 ),
               ),
               const SizedBox(height: 10),
-                Padding(
-                 padding: const EdgeInsets.only(left: 8.0),
-                 child: Chip(label: Text("Total Class $TotalClassCount")),
-               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Chip(label: Text("Total Class $TotalClassCount")),
+              ),
 
               const SizedBox(height: 5),
               //_________________________________________________________________
               if (dateTimeClass.formattedWeekday == "Saturday")
-                const SundayCardForHomePage(collectionName: 'Sunday',),
+                const SundayCardForHomePage(
+                  collectionName: 'Sunday',
+                ),
               if (dateTimeClass.formattedWeekday == "Sunday")
-                const SundayCardForHomePage(collectionName: 'Monday',),
+                const SundayCardForHomePage(
+                  collectionName: 'Monday',
+                ),
               if (dateTimeClass.formattedWeekday == "Monday")
-                const SundayCardForHomePage(collectionName: 'Tuesday',),
+                const SundayCardForHomePage(
+                  collectionName: 'Tuesday',
+                ),
               if (dateTimeClass.formattedWeekday == "Tuesday")
-                const SundayCardForHomePage(collectionName: 'Wednesday',),
+                const SundayCardForHomePage(
+                  collectionName: 'Wednesday',
+                ),
               if (dateTimeClass.formattedWeekday == "Wednesday")
-                const SundayCardForHomePage(collectionName: 'Thursday',),
-
+                const SundayCardForHomePage(
+                  collectionName: 'Thursday',
+                ),
 
               //____________________________________________________________________
 
-             //  Add a fallback widget for other weekdays
-              if (!["Monday", "Tuesday", "Sunday","Saturday","Saturday"].contains(dateTimeClass.formattedWeekday))
+              //  Add a fallback widget for other weekdays
+              if (!["Monday", "Tuesday", "Sunday", "Saturday", "Saturday"]
+                  .contains(dateTimeClass.formattedWeekday))
                 noClassToday(),
             ],
           ),
@@ -103,5 +115,4 @@ class _HomeScenState extends State<HomeScen> {
       ),
     );
   }
-
 }
