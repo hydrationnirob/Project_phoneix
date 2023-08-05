@@ -37,8 +37,9 @@ class _BustimeState extends State<Bustime> {
                 BusCard("Hadir Mor","Unknown"),
                 BusCard("Talaimar","Unknown"),
                 const GFAccordion(
+                    expandedTitleBackgroundColor: Colors.redAccent,
                     title: 'Important Info',
-                    content: 'GetFlutter is an open source library that comes with pre-build 1000+ UI components.',
+                    content: 'The bus schedule is currently experiencing issues and is not functioning correctly. The schedule will be updated once the bus system is operational again.',
                     collapsedIcon: Text('Show'),
                     expandedIcon: Text('Hide')
                 ),
@@ -51,8 +52,9 @@ class _BustimeState extends State<Bustime> {
                 BusCard("Amm Chottor","Unknown"),
                 BusCard("Vodra ","Unknown"),
                 const GFAccordion(
+                  expandedTitleBackgroundColor: Colors.redAccent,
                     title: 'GF Accordion',
-                    content: 'GetFlutter is an open source library that comes with pre-build 1000+ UI components.',
+                    content: 'The bus schedule is currently experiencing issues and is not functioning correctly. The schedule will be updated once the bus system is operational again.',
                     collapsedIcon: Text('Show'),
                     expandedIcon: Text('Hide')
                 ),

@@ -18,8 +18,8 @@ Widget Drower(context) {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: NetworkImage(
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5yuzc94uhZ0G5qUznPgs3Lm1h4NnUJI4qjIDCzsZHuU_COd5Z-V4IqlRzRoSWS2dWg7A&usqp=CAU"
+            image: AssetImage(
+              "images/26850656_754909891380492_2630732052702935892_o.jpg"
             )
           )
         ),

@@ -21,7 +21,7 @@ class _SplaseScenState extends State<SplaseScen> {
 
   void navigateToLogin() {
 
-    Future.delayed(const Duration(seconds: 3)).then((_) {
+    Future.delayed(const Duration(seconds: 2)).then((_) {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => const NavButton()),

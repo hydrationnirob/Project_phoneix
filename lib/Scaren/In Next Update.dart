@@ -12,8 +12,8 @@ class NextUpdatePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.network(
-              'https://www.vdh.virginia.gov/content/uploads/sites/23/2022/02/new-update.png', // Replace this with the path to your next update image.
+            Image.asset(
+              'images/new-update.png', // Replace this with the path to your next update image.
               height: 120,
             ),
             const SizedBox(height: 16),
@@ -29,11 +29,15 @@ class NextUpdatePage extends StatelessWidget {
             const SizedBox(height: 16),
             const ListTile(
               leading: Icon(Icons.check_circle, color: Colors.green),
-              title: Text('Notifications for class schedule changes.'),
+              title: Text('Notifications for Daily class schedule .'),
             ),
             const ListTile(
               leading: Icon(Icons.check_circle, color: Colors.green),
-              title: Text('Option to set custom reminders for classes.'),
+              title: Text('Improved UI and UX.'),
+            ),
+            const ListTile(
+              leading: Icon(Icons.check_circle, color: Colors.green),
+              title: Text('Notices Chat Box from admin.'),
             ),
             const ListTile(
               leading: Icon(Icons.check_circle, color: Colors.green),

@@ -12,8 +12,8 @@ class AboutPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.network(
-              'https://bijoybangla.news/wp-content/uploads/2022/04/Varendra-University-Logo-02.png', // Replace this with the path to your university logo image.
+            Image.asset(
+              'images/Varendra-University-Logo-02.png', // Replace this with the path to your university logo image.
               height: 120,
             ),
             const SizedBox(height: 16),
