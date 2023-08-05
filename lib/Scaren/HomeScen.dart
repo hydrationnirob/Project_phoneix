@@ -43,6 +43,43 @@ class _HomeScenState extends State<HomeScen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Next Day Class'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showModalBottomSheet<void>(
+                context: context,
+                builder: (BuildContext context) {
+                  return  SizedBox(
+                    height: 200,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          const Icon(Icons.info,color: Colors.red,),
+                          const Text('Information',style: TextStyle(fontWeight: FontWeight.bold ),),
+                          const Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Text("The class routine has been updated after 12:00 AM, "
+                                "and you can find the tomorrow's class schedule here. "
+                                "If you want a specific class schedule, you can click on the button below.",style: TextStyle(
+                              fontSize: 14,
+
+                            ), textAlign: TextAlign.justify),),
+                           ElevatedButton(onPressed: (){
+                             Navigator.pop(context);
+                           }, child: const Text("understood"))
+
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+
+            }, icon: const Icon(Icons.info_outlined),
+          )
+        ]  ,
         centerTitle: true,
       ),
       drawer:  Drawer(
@@ -54,11 +91,11 @@ class _HomeScenState extends State<HomeScen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.all(8.0),
+               Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Upcoming Classes : Tomorrow",
-                  style: TextStyle(
+                  "Upcoming Classes : ${dateTimeClass.getNextFormattedWeekday()}",
+                  style: const TextStyle(
                     fontSize: 20,
                     color: Colors.red,
                     fontWeight: FontWeight.bold,

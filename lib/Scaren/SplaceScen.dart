@@ -34,12 +34,9 @@ class _SplaseScenState extends State<SplaseScen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
         body: Center(
-          child: Image(
-            image: AssetImage('images/logo.png'),
-
-          )
+          child: Image.asset('images/newLogo.png',width: 300,height: 300,),
         ),
     );
   }

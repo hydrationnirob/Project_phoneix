@@ -103,7 +103,12 @@ class DateTimeClass {
     String formattedNextMonday = DateFormat.yMMMd().format(nextMonday);
     return formattedNextMonday;
   }
-
+  String getNextFormattedWeekday() {
+    DateTime now = DateTime.now();
+    DateTime nextDate = now.add(Duration(days: 1)); // Get the next date by adding one day
+    String formattedWeekday = DateFormat('EEEE').format(nextDate); // Format the weekday as 'Tuesday'
+    return formattedWeekday;
+  }
 
 
 
