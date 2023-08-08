@@ -4,6 +4,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 
 import 'All_Class_List_scen.dart';
 import 'BusTime.dart';
+import 'ChatBoxSysUser/ChatSystremFuntion.dart';
 import 'HomeScen.dart';
 
 void main() {
@@ -76,9 +77,14 @@ class _NavButtonState extends State<NavButton> {
               text: "Week Class",
             ),
             GButton(
+              icon: Icons.chat,
+              text: "Notice",
+            ),
+            GButton(
               icon: Icons.bus_alert,
               text: "Bus Schedule",
             ),
+
           ],
         ),
         body: Obx(() {
@@ -95,6 +101,8 @@ class NevController extends GetxController {
   var page = [
     const HomeScen(),
     const AllClassList(),
+    ChatScreen(),
     const Bustime(),
+
   ];
 }
