@@ -60,14 +60,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      title: 'Phoenix',
+      title: 'Auto Vu',
       theme: ThemeData.light(
         useMaterial3: true,
 
 
       ),
 
-      home: const SplaseScen(title: 'Phoenix'),
+      home: const SplaseScen(title: 'Auto Vu'),
 
     );
   }

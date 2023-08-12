@@ -29,7 +29,7 @@ class NextUpdatePage extends StatelessWidget {
             const SizedBox(height: 16),
             const ListTile(
               leading: Icon(Icons.check_circle, color: Colors.green),
-              title: Text('Notifications for Daily class schedule .'),
+              title: Text('Notifications On RealTime .'),
             ),
             const ListTile(
               leading: Icon(Icons.check_circle, color: Colors.green),
@@ -37,7 +37,7 @@ class NextUpdatePage extends StatelessWidget {
             ),
             const ListTile(
               leading: Icon(Icons.check_circle, color: Colors.green),
-              title: Text('Notices Chat Box from admin.'),
+              title: Text('Enable Dark Mode.'),
             ),
             const ListTile(
               leading: Icon(Icons.check_circle, color: Colors.green),

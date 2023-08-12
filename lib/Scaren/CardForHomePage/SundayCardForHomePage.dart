@@ -56,7 +56,7 @@ class _SundayCardForHomePageState extends State<SundayCardForHomePage> {
                     child: Column(
                       children: [
                         ListTile(
-                          title: Text(classTime.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                          title: Text(classTime.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                           leading: classTime.timeImg,
                           trailing: Chip(label: Text("${classTime.startTime}-${classTime.endTime}"), labelStyle: const TextStyle(color: Colors.pink)),
                           subtitle: Text("Room ${classTime.room}"),
