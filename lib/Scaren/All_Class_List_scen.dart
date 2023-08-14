@@ -117,7 +117,7 @@ DateTimeClass dateTimeClass= DateTimeClass();
                child: Text( "Today: ${dateTimeClass.formattedMonthDay} ${dateTimeClass.formattedWeekday}", style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.red),),
              ),
 
-            InkWell(child: WCardmenu("Sunday", sundayDocumentCount, dateTimeClass.NextSundayDate()),
+            InkWell(child: WCardmenu("Sunday", sundayDocumentCount, dateTimeClass.nextSundayDate()),
 
                 onTap: () {
 
@@ -125,22 +125,22 @@ DateTimeClass dateTimeClass= DateTimeClass();
                 return const SundayWeekClass();
               }));
             }),
-            InkWell(child: WCardmenu("Monday", mondayDocumentCount,dateTimeClass.NextMondayDate()), onTap: () {
+            InkWell(child: WCardmenu("Monday", mondayDocumentCount,dateTimeClass.nextMondayDate()), onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return const MondayWeekClass();
               }));
             }),
-            InkWell(child: WCardmenu("Tuesday", tuesdayDocumentCount,dateTimeClass.NextTuesdayDate()), onTap: () {
+            InkWell(child: WCardmenu("Tuesday", tuesdayDocumentCount,dateTimeClass.nextTuesdayDate()), onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return const TuesdayWeekClass();
               }));
             }),
-            InkWell(child: WCardmenu("Wednesday", wednesdayDocumentCount,dateTimeClass.NextWednesdayDate()), onTap: () {
+            InkWell(child: WCardmenu("Wednesday", wednesdayDocumentCount,dateTimeClass.nextWednesdayDate()), onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return const WednesdayWeekClass();
               }));
             }),
-            InkWell(child: WCardmenu("Thursday", thursdayDocumentCount,dateTimeClass.NextthursdayDate()), onTap: () {
+            InkWell(child: WCardmenu("Thursday", thursdayDocumentCount,dateTimeClass.nextThursdayDate()), onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return const ThursdayWeekClass();
               }));

@@ -28,7 +28,7 @@ class _HomeScenState extends State<HomeScen> {
 
   Future<QuerySnapshot<Map<String, dynamic>>> _TotalClassCountF() async {
     final snapshot = await FirebaseFirestore.instance
-        .collection(dateTimeClass.NextDayCount(1))
+        .collection(dateTimeClass.Nextday)
         .get();
     // Store the document count in the variable
     setState(() {
@@ -143,10 +143,12 @@ class _HomeScenState extends State<HomeScen> {
               //____________________________________________________________________
 
               //  Add a fallback widget for other weekdays
+
               if (!["Monday", "Tuesday", "Sunday", "Saturday", "Saturday"]
                   .contains(dateTimeClass.formattedWeekday))
-                noClassToday(),
+                   noClassToday(),
             ],
+
           ),
         ),
       ),

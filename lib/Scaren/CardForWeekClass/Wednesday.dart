@@ -39,7 +39,7 @@ class _WednesdayWeekClassState extends State<WednesdayWeekClass> {
             future: wednesdayData,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator(); // Show a loader while data is being fetched.
+                return const CircularProgressIndicator(); // Show a loader while data is being fetched.
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {
@@ -50,7 +50,7 @@ class _WednesdayWeekClassState extends State<WednesdayWeekClass> {
                     itemBuilder: (context, index) {
                       final data = documents[index].data();
                       return HomePageCardWidget(
-                        Icon(Icons.add_box, color: Colors.red),
+                        const Icon(Icons.add_box, color: Colors.red),
                         data['Name'],
                         data['Room'],
                         data['StartTime'],

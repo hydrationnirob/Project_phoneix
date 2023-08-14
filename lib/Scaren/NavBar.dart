@@ -70,7 +70,7 @@ class _NavButtonState extends State<NavButton> {
           tabs: const [
             GButton(
               icon: Icons.home,
-              text: "Today",
+              text: "Home",
             ),
             GButton(
               icon: Icons.school,
