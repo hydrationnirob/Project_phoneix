@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:phoenix_user/Utiletis/reUseAble/DatabaseCollection.dart';
 import 'package:phoenix_user/Utiletis/reUseAble/DateTimeClass.dart';
 
 import 'MainUi.dart';
@@ -11,7 +12,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   late Future<QuerySnapshot<Map<String, dynamic>>> chatData;
-  String collectionName = "notices";
+
   DateTimeClass dateTimeClass = DateTimeClass();
 
   final TextEditingController _textController = TextEditingController();
@@ -20,7 +21,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    chatData = FirebaseFirestore.instance.collection(collectionName).orderBy("Time",descending: true).get();
+    chatData = FirebaseFirestore.instance.collection(DatabaseCollection.Semester).doc(DatabaseCollection.Section).collection(DatabaseCollection.NoticeCollection).orderBy("Time",descending: true).get();
   }
 
   Widget _buildChatList() {

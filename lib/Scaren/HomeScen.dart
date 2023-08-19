@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:phoenix_user/Utiletis/reUseAble/DatabaseCollection.dart';
 import 'package:phoenix_user/Utiletis/reUseAble/DateTimeClass.dart';
 import '../Utiletis/reUseAble/NoClassToday.dart';
 import 'CardForHomePage/SundayCardForHomePage.dart';
@@ -28,6 +29,8 @@ class _HomeScenState extends State<HomeScen> {
 
   Future<QuerySnapshot<Map<String, dynamic>>> _TotalClassCountF() async {
     final snapshot = await FirebaseFirestore.instance
+         .collection(DatabaseCollection.Semester)
+        .doc(DatabaseCollection.Section)
         .collection(dateTimeClass.Nextday)
         .get();
     // Store the document count in the variable
@@ -120,31 +123,31 @@ class _HomeScenState extends State<HomeScen> {
               const SizedBox(height: 5),
               //_________________________________________________________________
               if (dateTimeClass.formattedWeekday == "Saturday")
-                const SundayCardForHomePage(
-                  collectionName: 'Sunday',
+                 SundayCardForHomePage(
+                  collectionName: DatabaseCollection.DaySunday,
                 ),
               if (dateTimeClass.formattedWeekday == "Sunday")
-                const SundayCardForHomePage(
-                  collectionName: 'Monday',
+                 SundayCardForHomePage(
+                  collectionName: DatabaseCollection.DayMonday
                 ),
               if (dateTimeClass.formattedWeekday == "Monday")
-                const SundayCardForHomePage(
-                  collectionName: 'Tuesday',
+                 SundayCardForHomePage(
+                  collectionName: DatabaseCollection.DayTuesday,
                 ),
               if (dateTimeClass.formattedWeekday == "Tuesday")
-                const SundayCardForHomePage(
-                  collectionName: 'Wednesday',
+                 SundayCardForHomePage(
+                  collectionName: DatabaseCollection.DayWednesday,
                 ),
               if (dateTimeClass.formattedWeekday == "Wednesday")
-                const SundayCardForHomePage(
-                  collectionName: 'Thursday',
+                 SundayCardForHomePage(
+                  collectionName: DatabaseCollection.DayThursday,
                 ),
 
               //____________________________________________________________________
 
               //  Add a fallback widget for other weekdays
 
-              if (!["Monday", "Tuesday", "Sunday", "Saturday", "Saturday"]
+              if (!["Monday", "Tuesday", "Sunday", "Saturday", "Wednesday"]
                   .contains(dateTimeClass.formattedWeekday))
                    noClassToday(),
             ],

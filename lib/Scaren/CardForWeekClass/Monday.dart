@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../Utiletis/reUseAble/DatabaseCollection.dart';
 import '../../Utiletis/reUseAble/HomePageCardWidget.dart';
 
 class MondayWeekClass extends StatefulWidget {
@@ -11,13 +12,14 @@ class MondayWeekClass extends StatefulWidget {
 }
 
 class _MondayWeekClassState extends State<MondayWeekClass> {
-  late Future<QuerySnapshot<Map<String, dynamic>>> wednesdayData; // Make the variable nullable
+  late Future<QuerySnapshot<Map<String, dynamic>>> wednesdayData;// Make the variable nullable
+
 
   @override
   void initState() {
     super.initState();
     // Fetch data from Firestore
-    wednesdayData = FirebaseFirestore.instance.collection('Monday').get();
+    wednesdayData = FirebaseFirestore.instance.collection(DatabaseCollection.Semester).doc(DatabaseCollection.Section).collection(DatabaseCollection.DayMonday).orderBy("StartTime").get();
   }
 
   @override
@@ -50,7 +52,7 @@ class _MondayWeekClassState extends State<MondayWeekClass> {
                     itemBuilder: (context, index) {
                       final data = documents[index].data();
                       return HomePageCardWidget(
-                        Icon(Icons.add_box, color: Colors.red),
+                        const Icon(Icons.add_box, color: Colors.red),
                         data['Name'],
                         data['Room'],
                         data['StartTime'],

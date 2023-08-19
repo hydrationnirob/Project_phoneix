@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:getwidget/types/gf_loader_type.dart';
+import 'package:phoenix_user/Utiletis/reUseAble/DatabaseCollection.dart';
 class SundayCardForHomePage extends StatefulWidget {
   final String collectionName;
 
@@ -24,7 +25,7 @@ class _SundayCardForHomePageState extends State<SundayCardForHomePage> {
 
   Future<List<ClassTime>> _fetchHomePageData() async {
     try {
-      final snapshot = await FirebaseFirestore.instance.collection(widget.collectionName).orderBy("StartTime").get();
+      final snapshot = await FirebaseFirestore.instance.collection(DatabaseCollection.Semester).doc(DatabaseCollection.Section).collection(widget.collectionName).orderBy("StartTime").get();
       final documents = snapshot.docs;
       final List<ClassTime> data = documents.map((doc) => ClassTime.fromSnapshot(doc)).toList();
       return data;

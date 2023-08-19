@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../Utiletis/reUseAble/DatabaseCollection.dart';
 import '../../Utiletis/reUseAble/HomePageCardWidget.dart';
 
 class TuesdayWeekClass extends StatefulWidget {
@@ -17,7 +18,7 @@ class _TuesdayWeekClassState extends State<TuesdayWeekClass> {
   void initState() {
     super.initState();
     // Fetch data from Firestore
-    wednesdayData = FirebaseFirestore.instance.collection('Tuesday').orderBy("StartTime").get();
+    wednesdayData =  FirebaseFirestore.instance.collection(DatabaseCollection.Semester).doc(DatabaseCollection.Section).collection(DatabaseCollection.DayTuesday).orderBy("StartTime").get();
   }
 
   @override

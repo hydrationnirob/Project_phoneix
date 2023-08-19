@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:phoenix_user/Scaren/CardForWeekClass/Monday.dart';
 import 'package:phoenix_user/Scaren/CardForWeekClass/Tuesday.dart';
 import 'package:phoenix_user/Scaren/CardForWeekClass/Wednesday.dart';
+import 'package:phoenix_user/Utiletis/reUseAble/DatabaseCollection.dart';
 import 'package:phoenix_user/Utiletis/reUseAble/DateTimeClass.dart';
 import '../Utiletis/reUseAble/Week_Card.dart';
 import 'CardForWeekClass/Sunday.dart';
@@ -41,8 +42,9 @@ class _AllClassListState extends State<AllClassList> {
 
 
   }
+
   Future<QuerySnapshot<Map<String, dynamic>>> _fetchSundayData() async {
-     final snapshot = await FirebaseFirestore.instance.collection('Sunday').get();
+     final snapshot = await FirebaseFirestore.instance.collection(DatabaseCollection.Semester).doc(DatabaseCollection.Section).collection(DatabaseCollection.DaySunday).get();
      // Store the document count in the variable
      setState(() {
        sundayDocumentCount = snapshot.size;
@@ -50,7 +52,7 @@ class _AllClassListState extends State<AllClassList> {
      return snapshot;
    }
    Future<QuerySnapshot<Map<String, dynamic>>> _fetchMondayData() async {
-     final snapshot = await FirebaseFirestore.instance.collection('Monday').get();
+     final snapshot = await FirebaseFirestore.instance.collection(DatabaseCollection.Semester).doc(DatabaseCollection.Section).collection(DatabaseCollection.DayMonday).get();
      // Store the document count in the variable
      setState(() {
        mondayDocumentCount = snapshot.size;
@@ -60,7 +62,7 @@ class _AllClassListState extends State<AllClassList> {
 
 
    Future<QuerySnapshot<Map<String, dynamic>>> _fetchTuesDayData() async {
-     final snapshot = await FirebaseFirestore.instance.collection('Tuesday').get();
+     final snapshot = await FirebaseFirestore.instance.collection(DatabaseCollection.Semester).doc(DatabaseCollection.Section).collection(DatabaseCollection.DayTuesday).get();
      // Store the document count in the variable
      setState(() {
        tuesdayDocumentCount = snapshot.size;
@@ -69,7 +71,7 @@ class _AllClassListState extends State<AllClassList> {
    }
 
    Future<QuerySnapshot<Map<String, dynamic>>> _fetchWednesdayData() async {
-     final snapshot = await FirebaseFirestore.instance.collection('Wednesday').get();
+     final snapshot = await FirebaseFirestore.instance.collection(DatabaseCollection.Semester).doc(DatabaseCollection.Section).collection(DatabaseCollection.DayWednesday).get();
      // Store the document count in the variable
      setState(() {
        wednesdayDocumentCount = snapshot.size;
@@ -78,7 +80,7 @@ class _AllClassListState extends State<AllClassList> {
    }
 
    Future<QuerySnapshot<Map<String, dynamic>>> _fetchThursdayData() async {
-     final snapshot = await FirebaseFirestore.instance.collection('Thursday').get();
+     final snapshot = await FirebaseFirestore.instance.collection(DatabaseCollection.Semester).doc(DatabaseCollection.Section).collection(DatabaseCollection.DayThursday).get();
      // Store the document count in the variable
      setState(() {
        thursdayDocumentCount  = snapshot.size;
