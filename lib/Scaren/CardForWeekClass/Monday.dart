@@ -41,7 +41,7 @@ class _MondayWeekClassState extends State<MondayWeekClass> {
             future: wednesdayData,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator(); // Show a loader while data is being fetched.
+                return const CircularProgressIndicator(); // Show a loader while data is being fetched.
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {

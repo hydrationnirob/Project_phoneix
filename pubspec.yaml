@@ -31,7 +31,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-
   intl: ^0.17.0
   google_nav_bar: ^5.0.6
   get: ^4.6.5
@@ -41,6 +40,9 @@ dependencies:
   getwidget: ^3.1.1
   firebase_messaging: ^14.6.5
   url_launcher: ^6.1.12
+  google_maps_flutter: ^2.5.0
+  location: ^5.0.3
+  firebase_database: ^10.3.6
 
 
 
@@ -71,6 +73,7 @@ flutter:
   assets:
     - images/
     - images/animation_lkjew97f.json
+    - images/3448339.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

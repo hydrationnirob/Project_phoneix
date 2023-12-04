@@ -3,36 +3,23 @@ import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 import 'All_Class_List_scen.dart';
-import 'BusTime.dart';
+
 import 'ChatBoxSysUser/ChatSystremFuntion.dart';
 import 'HomeScen.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Navigation App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const NavButton(),
-    );
-  }
-}
+import 'MapScreen/HomeMapScreen.dart';
 
 class NavButton extends StatefulWidget {
   const NavButton({Key? key}) : super(key: key);
 
   @override
   State<NavButton> createState() => _NavButtonState();
+
+
 }
 
 class _NavButtonState extends State<NavButton> {
   NevController controller = Get.put(NevController());
+
 
   Future<bool> _onBackPressed() async {
     return (await showDialog(
@@ -54,6 +41,10 @@ class _NavButtonState extends State<NavButton> {
     )) ??
         false;
   }
+
+  MainMapScreen mainMapScreen = MainMapScreen();
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +93,7 @@ class NevController extends GetxController {
     const HomeScen(),
     const AllClassList(),
     ChatScreen(),
-    const Bustime(),
+     MainMapScreen(),
 
   ];
 }
