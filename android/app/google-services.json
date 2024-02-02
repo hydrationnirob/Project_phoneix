@@ -1,10 +1,47 @@
 {
   "project_info": {
     "project_number": "338182850959",
+    "firebase_url": "https://routineford-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "routineford",
     "storage_bucket": "routineford.appspot.com"
   },
   "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338182850959:android:ea03b1a23118f79dc4e3fa",
+        "android_client_info": {
+          "package_name": "com.example.bus_location_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338182850959-grf8odkniret9kl7tudjq46fg5deg26b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvFuakTHVSshX_8ADMDWlUcFQn6wFD5k0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338182850959-grf8odkniret9kl7tudjq46fg5deg26b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "338182850959-fcsjsd7fre16o0os050hko5vos3772aj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.projectPhoneix"
+              }
+            }
+          ]
+        }
+      }
+    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:338182850959:android:9b6b8eb9b697472bc4e3fa",
@@ -29,6 +66,13 @@
             {
               "client_id": "338182850959-grf8odkniret9kl7tudjq46fg5deg26b.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "338182850959-fcsjsd7fre16o0os050hko5vos3772aj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.projectPhoneix"
+              }
             }
           ]
         }

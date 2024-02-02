@@ -43,6 +43,7 @@ dependencies:
   google_maps_flutter: ^2.5.0
   location: ^5.0.3
   firebase_database: ^10.3.6
+  socket_io_client: ^2.0.3+1
 
 
 

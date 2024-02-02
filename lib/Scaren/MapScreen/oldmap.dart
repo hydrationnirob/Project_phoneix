@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -7,12 +8,13 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:ui' as ui;
 import 'package:location/location.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:phoenix_user/Controller/MainMapController.dart';
-import 'package:phoenix_user/SocketServices.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
 
-class MainMapScreen extends StatefulWidget {
-  const MainMapScreen({Key? key}) : super(key: key);
+class MainMapController extends GetxController {
+  // Add your controller logic here
+}
+
+class Oldmap extends StatefulWidget {
+  const Oldmap({Key? key}) : super(key: key);
 
   static const CameraPosition _kLake = CameraPosition(
     bearing: 192.8334901395799,
@@ -22,14 +24,18 @@ class MainMapScreen extends StatefulWidget {
   );
 
   @override
-  State<MainMapScreen> createState() => _MainMapScreenState();
+  State<Oldmap> createState() => _OldmapState();
 }
 
-class _MainMapScreenState extends State<MainMapScreen> {
+class _OldmapState extends State<Oldmap> {
   late GoogleMapController mapController;
+  late DatabaseReference _busReference;
   final MainMapController _mainMapController = Get.put(MainMapController());
 
+  late BitmapDescriptor customIcon;
   late Uint8List busIcon = Uint8List(0);
+
+  List<Marker> markers = [];
 
   List<LatLng> latLngs = [
     const LatLng(24.363558653731136, 88.60431191947981),
@@ -52,6 +58,7 @@ class _MainMapScreenState extends State<MainMapScreen> {
     'images/3448339.png',
     'images/3448339.png'
   ];
+
 
   void getPermission() async {
     Location location = Location();
@@ -83,77 +90,47 @@ class _MainMapScreenState extends State<MainMapScreen> {
     loadData();
     // Request location permission
     getPermission();
-    SocketService.connect((data) {
-      _onBusAdded(data);
-      if (data != null && data is Map<String, dynamic>) {
-        double latitude = data['lat'];
-        double longitude = data['long'];
 
-        // Now you can use latitude and longitude as needed
-        print('Latitude: $latitude, Longitude: $longitude');
-      }
-    });
+    // Initialize Firebase Realtime Database reference
+    _busReference = FirebaseDatabase.instance.ref('Current_Location').child('123');
+
+    // Start listening for bus updates
+    _startLocationUpdates();
+
   }
 
-  void _onBusAdded(dynamic data) {
-    if (data != null && data is Map<String, dynamic>) {
-      double latitude = data['lat'];
-      double longitude = data['long'];
-      print('Received data: $data'); // Add this line for debugging
-      print('Latitude: $latitude, Longitude: $longitude');
-      if(mounted) {
-        setState(() {
-        print('Adding marker to the list');
-        _mainMapController.markers.removeWhere((marker) => marker.markerId.value == 'bus');
-       print('Markers length after clearing: ${_mainMapController.markers.length}'); // Add this line for debugging
-        _mainMapController.markers.add(
-          Marker(
-            markerId: MarkerId('bus'),
-            icon: BitmapDescriptor.fromBytes(busIcon),
-            position: LatLng(latitude, longitude),
-            infoWindow: const InfoWindow(
-              title: 'Bus',
-            ),
-             rotation: 160,
-            anchor: const Offset(0.5, 0.5),
-          ),
-        );
-        // Start the rotation animation
-        // _startRotationAnimation();
-      });
+  // Add a method to start listening for bus updates
+  void _startLocationUpdates() {
+    print(_busReference.key);
+    print('Listening for bus updates');
+    try{
+      print("try");
+      _busReference.onValue.listen((event) {
+        final data = event.snapshot.value as Map<dynamic, dynamic>;
+        final lat = data['latitude'] as double;
+        final lng = data['longitude'] as double;
+        final busLatLng = LatLng(lat, lng);
+        print('Bus location updated: $busLatLng');
+        print("trying...........");
+
       }
 
-      print(
-          'Markers length after adding: ${_mainMapController.markers.length}'); // Add this line for debugging
+      );
+    }catch(e){
+      print(e);
+
     }
-  }
-  //
-  // void _animateMarkerPosition() async {
-  //   // Get the current position of the device
-  //   LocationData locationData = await Location.instance.getLocation();
-  //   LatLng currentLatLng =
-  //   LatLng(locationData.latitude!, locationData.longitude!);
-  //
-  //   // Move the marker position to the current position
-  //   mapController.animateCamera(CameraUpdate.newCameraPosition(
-  //     CameraPosition(
-  //       target: currentLatLng,
-  //       zoom: 18,
-  //     ),
-  //   ));
-  // }
 
-  void _startRotationAnimation() {
-    // Animate the marker rotation using a periodic timer
-    Timer.periodic(const Duration(milliseconds: 50), (timer) {
-      _mainMapController.busRotation.value += 5;
-
-      // Stop the animation after a certain number of rotations
-      if (_mainMapController.busRotation.value >= 360) {
-        timer.cancel();
-      }
-    });
   }
+
+
+
+
+
+
+
+
+
 
   Future<Uint8List> getBytesFromAsset(String path, int width) async {
     ByteData data = await rootBundle.load(path);
@@ -167,12 +144,20 @@ class _MainMapScreenState extends State<MainMapScreen> {
         .asUint8List();
   }
 
+
+
+
+
+
+
+
+
   loadData() async {
-    busIcon = await getBytesFromAsset('images/Asset 2.png', 120);
+    busIcon = await getBytesFromAsset('images/3448339.png', 120);
 
     for (int i = 0; i < images.length; i++) {
       final Uint8List markerIcon = await getBytesFromAsset(images[i], 120);
-      _mainMapController.markers.add(
+      markers.add(
         Marker(
           markerId: MarkerId(i.toString()),
           icon: BitmapDescriptor.fromBytes(markerIcon),
@@ -190,12 +175,13 @@ class _MainMapScreenState extends State<MainMapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+
         onPressed: () async {
+          _startLocationUpdates();
           print('My Location button pressed');
           // Get the current position of the device
           LocationData locationData = await Location.instance.getLocation();
-          LatLng latLng =
-          LatLng(locationData.latitude!, locationData.longitude!);
+          LatLng latLng = LatLng(locationData.latitude!, locationData.longitude!);
 
           // Move the map camera to the current position
           mapController.animateCamera(CameraUpdate.newCameraPosition(
@@ -213,11 +199,11 @@ class _MainMapScreenState extends State<MainMapScreen> {
         myLocationEnabled: true,
         compassEnabled: false,
         mapType: MapType.normal,
-        initialCameraPosition: MainMapScreen._kLake,
+        initialCameraPosition: Oldmap._kLake,
         onMapCreated: (GoogleMapController controller) {
           mapController = controller;
         },
-        markers: <Marker>{..._mainMapController.markers},
+        markers: <Marker>{...markers},
       ),
     );
   }
