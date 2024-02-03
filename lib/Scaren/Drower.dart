@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../SocketServices.dart';
 import 'AdoutPage.dart';
 import 'In Next Update.dart';
 
@@ -13,6 +14,7 @@ Future<void> _launchUrl() async {
 
 
 Widget Drower(context) {
+  TextEditingController textFieldController = TextEditingController();
   return ListView(
     padding: EdgeInsets.zero,
     children: [
@@ -75,6 +77,18 @@ Widget Drower(context) {
           );
         },
       ),
+      const Divider(),
+       TextField(
+        controller: textFieldController,
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: 'Search',
+        ),
+      ),
+      ElevatedButton(onPressed: (){
+        print(textFieldController.text);
+        SocketService.ipAddress = textFieldController.text;
+      }, child: const Text("Search")),
 
     ],
   );

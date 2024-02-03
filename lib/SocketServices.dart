@@ -1,17 +1,22 @@
 
+
+import 'package:flutter/material.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
+
+
 
 class SocketService {
 
 
 
-
+   static  late  var ipAddress ;
+  //192.168.31.192
 
   static IO.Socket? socket;
 
   static void init() {
-
-    socket = IO.io('http://192.168.31.192:3030/user',
+      print('the api is $ipAddress');
+    socket = IO.io('http://$ipAddress:3030/user',
         IO.OptionBuilder()
             .setTransports(['websocket']) // for Flutter or Dart VM
             .disableAutoConnect()
@@ -27,10 +32,13 @@ class SocketService {
     // });
   }
 
- static void connect(Function mapdata) async {
+ static void connect(BuildContext context,Function mapdata) async {
       socket?.connect();
     socket?.onConnect((_) {
       print('connected Socket');
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Connected to the server'),
+      ));
 
       socket?.on('C_bus_moved', (data) {
 
@@ -57,6 +65,9 @@ class SocketService {
     });
     socket?.onConnectError((data) {
       print('connect error $data');
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Connection error'),
+      ));
 
 
     });

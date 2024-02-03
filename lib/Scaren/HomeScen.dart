@@ -150,10 +150,13 @@ class _HomeScenState extends State<HomeScen> {
               if (!["Monday", "Tuesday", "Sunday", "Saturday", "Wednesday"]
                   .contains(dateTimeClass.formattedWeekday))
                    noClassToday(),
+
+
             ],
 
           ),
         ),
+
       ),
     );
   }

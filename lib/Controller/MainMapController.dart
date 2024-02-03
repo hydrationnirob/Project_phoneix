@@ -6,4 +6,5 @@ class MainMapController extends GetxController {
   var markers = <Marker>[].obs;
   var busMarker = <Marker>[].obs;
   var busRotation = 0.0.obs;
+  var ipAddress = ''.obs;
 }

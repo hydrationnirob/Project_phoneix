@@ -6,10 +6,9 @@ import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:ui' as ui;
 import 'package:location/location.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:phoenix_user/Controller/MainMapController.dart';
 import 'package:phoenix_user/SocketServices.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+
 
 class MainMapScreen extends StatefulWidget {
   const MainMapScreen({Key? key}) : super(key: key);
@@ -83,7 +82,8 @@ class _MainMapScreenState extends State<MainMapScreen> {
     loadData();
     // Request location permission
     getPermission();
-    SocketService.connect((data) {
+    SocketService.init();
+    SocketService.connect(context,(data) {
       _onBusAdded(data);
       if (data != null && data is Map<String, dynamic>) {
         double latitude = data['lat'];
@@ -114,8 +114,7 @@ class _MainMapScreenState extends State<MainMapScreen> {
             infoWindow: const InfoWindow(
               title: 'Bus',
             ),
-             rotation: 160,
-            anchor: const Offset(0.5, 0.5),
+
           ),
         );
         // Start the rotation animation
